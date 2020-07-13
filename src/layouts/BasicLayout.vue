@@ -49,8 +49,6 @@ export default {
 </script>
 
 <style lang="less">
-@import url('./../global.less');
-
 .container {
   position: relative;
   .dashboard-wrap {

@@ -54,8 +54,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url('./../global.less');
-
 .dashboard {
   min-height: 400px;
   width: 100%;
