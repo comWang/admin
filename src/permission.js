@@ -1,28 +1,28 @@
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-import router from './router';
-import storage from 'store';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import router from './router'
+import storage from 'store'
 import { ACCESS_TOKEN } from './store/types'
-import { setDocumentTitle } from '@/utils/common';
+import { setDocumentTitle } from '@/utils/common'
 
 // 配置顶部加载进度条
-NProgress.configure({ showSpinner: false });
+NProgress.configure({ showSpinner: false })
 
-const whiteList = ['login', 'register', 'registerResult']; // no redirect whitelist
-const loginRoutePath = '/user/login';
-const defaultRoutePath = '/dashboard/home';
+const whiteList = ['login', 'register', 'registerResult'] // no redirect whitelist
+const loginRoutePath = '/user/login'
+const defaultRoutePath = '/dashboard/home'
 
 router.beforeEach((to, from, next) => {
-  NProgress.start();
-  to.meta && to.meta.title && setDocumentTitle(to.meta.title);
+  NProgress.start()
+  to.meta && to.meta.title && setDocumentTitle(to.meta.title)
   // 没有session_token
   if (!storage.get(ACCESS_TOKEN)) {
     // 免认证路由直接放过
-    if (whiteList.includes(to.name)) next();
+    if (whiteList.includes(to.name)) next()
     // 跳转登录，登录成功后重定向至query的地址
     // 跳转逻辑在login页面实现
-    else next({ path: loginRoutePath, query: { redirect: to.fullPath } });
-    return;
+    else next({ path: loginRoutePath, query: { redirect: to.fullPath } })
+    return
   }
 
   // 本地存储有session_token
@@ -31,12 +31,12 @@ router.beforeEach((to, from, next) => {
   if (to.path === loginRoutePath) {
     next({ path: defaultRoutePath })
     // 这种被重定向，会导致跳过afterEach钩子
-    NProgress.done();
+    NProgress.done()
   } else {
     // 进行权限控制，认证
     next()
   }
-});
+})
 
 router.afterEach(() => {
   NProgress.done() // finish progress bar

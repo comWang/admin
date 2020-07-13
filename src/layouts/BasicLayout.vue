@@ -20,15 +20,15 @@
 </template>
 <script>
 import { mapState, mapMutations } from 'vuex'
-import Dashboard from '@/components/Dashboard';
-import Header from '@/components/global/Header';
+import Dashboard from '@/components/Dashboard'
+import Header from '@/components/global/Header'
 import theme from '@/config/theme.config'
 
 const menuList = [
   { icon: 'el-icon-s-unfold' },
   { name: '导航一', icon: 'el-icon-location' },
   { name: '导航二', icon: 'el-icon-document' },
-];
+]
 export default {
   components: {
     Dashboard,
@@ -37,15 +37,15 @@ export default {
   data() {
     return {
       menuList,
-    };
+    }
   },
   computed: {
     ...mapState(['isCollapse', 'isMobile']),
   },
   methods: {
-    ...mapMutations(['toggleAsideBar'])
-  }
-};
+    ...mapMutations(['toggleAsideBar']),
+  },
+}
 </script>
 
 <style lang="less">

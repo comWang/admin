@@ -1,8 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const buildDate = JSON.stringify(new Date().toLocaleString());
+const path = require('path')
+const webpack = require('webpack')
+const buildDate = JSON.stringify(new Date().toLocaleString())
 
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production'
 
 const assetsCDN = {
   // webpack build externals
@@ -20,7 +20,7 @@ const assetsCDN = {
     '//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js',
     '//cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js',
   ],
-};
+}
 
 // vue.config.js
 const vueConfig = {
@@ -37,10 +37,10 @@ const vueConfig = {
   },
 
   chainWebpack: config => {
-    config.resolve.alias.set('@', path.join(__dirname, 'src'));
+    config.resolve.alias.set('@', path.join(__dirname, 'src'))
 
-    const svgRule = config.module.rule('svg');
-    svgRule.uses.clear();
+    const svgRule = config.module.rule('svg')
+    svgRule.uses.clear()
     svgRule
       .oneOf('inline')
       .resourceQuery(/inline/)
@@ -53,14 +53,14 @@ const vueConfig = {
       .loader('file-loader')
       .options({
         name: 'assets/[name].[hash:8].[ext]',
-      });
+      })
     // 框架从cdn加载，这里cdn是自定义配置，index模板从中取值生成标签
     if (isProd) {
       config.plugin('html').tap(args => {
         // 单页只有一个实例配置
-        args[0].cdn = assetsCDN;
-        return args;
-      });
+        args[0].cdn = assetsCDN
+        return args
+      })
       config.merge({ externals: assetsCDN.externals })
     }
   },
@@ -78,12 +78,12 @@ const vueConfig = {
   css: {
     loaderOptions: {
       less: {
-        prependData: `@import '@/global.less';`,
+        prependData: '@import \'@/global.less\';',
       },
     },
   },
   productionSourceMap: false,
   lintOnSave: 'warning',
-};
+}
 
-module.exports = vueConfig;
+module.exports = vueConfig

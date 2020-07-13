@@ -13,14 +13,14 @@ import { mapActions } from 'vuex'
       ...mapActions(['login']),
       prepareLogin() {
         this.login({id: 123}).then((res) => {
-          const { query } = this.$route;
+          const { query } = this.$route
           storage.set(ACCESS_TOKEN, res)
           this.$notify({title: '登录成功！'})
-          if (query.redirect) this.$router.replace({ path: query.redirect });
+          if (query.redirect) this.$router.replace({ path: query.redirect })
           else this.$router.replace({ path: '/' })
         })
       },
-    }
+    },
   }
 </script>
 

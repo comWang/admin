@@ -47,10 +47,10 @@ export default {
   computed: {
     ...mapState(['isCollapse', 'isMoblie']),
     invisible() {
-      return !this.isMoblie ? this.isCollapse : false;
-    }
-  }
-};
+      return !this.isMoblie ? this.isCollapse : false
+    },
+  },
+}
 </script>
 
 <style lang="less" scoped>

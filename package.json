@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve --mode=dev",
     "build": "vue-cli-service build --mode=prod",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lint:nofix": "vue-cli-service lint --no-fix",
+    "prettify": "prettier --write 'src/**/*.{js,vue}'"
   },
   "dependencies": {
     "axios": "^0.19.2",

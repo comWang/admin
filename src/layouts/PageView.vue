@@ -4,23 +4,23 @@ import Footer from '@/components/global/Footer'
 export default {
   name: 'PageView',
   components: {
-    Footer
+    Footer,
   },
   render(h) {
-    const { matched } = this.$route;
+    const { matched } = this.$route
 
     const breadcrumb = (
       <el-breadcrumb separator="/">
         {matched.slice(1, matched.length).map((route, i) => {
           if (i === matched.length - 1) return (
             <el-breadcrumb-item>{route.name}</el-breadcrumb-item>
-          );
+          )
           return (
             <el-breadcrumb-item to={{path: route.path}}>{route.name}</el-breadcrumb-item>
-          );
+          )
         })}
       </el-breadcrumb>
-    );
+    )
     return (
       <div>
         <div class="breadcrumb-wrap">
@@ -30,14 +30,14 @@ export default {
         <router-view />
         <Footer />
       </div>
-    );
+    )
   },
   computed: {
-    ...mapState(['isCollapse'])
+    ...mapState(['isCollapse']),
   },
   methods: {
-    ...mapMutations(['toggleAsideBar'])
-  }
+    ...mapMutations(['toggleAsideBar']),
+  },
 }
 </script>
 

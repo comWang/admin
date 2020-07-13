@@ -3,7 +3,7 @@ export default {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve('ad231313fgh7856')
-      }, 1000);
+      }, 1000)
     })
-  }
+  },
 }

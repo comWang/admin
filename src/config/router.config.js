@@ -1,13 +1,13 @@
-import { BasicLayout, PageView, BlankLayout } from '@/layouts';
-import ExceptionPage404 from '@/views/error/404';
-import Login from '@/views/user/Login';
+import { BasicLayout, PageView, BlankLayout } from '@/layouts'
+import ExceptionPage404 from '@/views/error/404'
+import Login from '@/views/user/Login'
 
 const viewList = {
   home: () => import('@/views/dashboard/Home'),
   test: () => import('@/views/dashboard/test'),
 
-  exception404: () => import(/* webpackChunkName: "fail" */'@/views/error/404')
-};
+  exception404: () => import(/* webpackChunkName: "fail" */'@/views/error/404'),
+}
 
 export const asyncRoutes = [
   {
@@ -35,14 +35,14 @@ export const asyncRoutes = [
             name: 'test',
             component: viewList.test,
             meta: {
-              title: '测试'
-            }
+              title: '测试',
+            },
           },
         ],
       },
     ],
   },
-];
+]
 
 // 基础路由，与业务逻辑基本无关
 export const constantRoutes = [
@@ -65,6 +65,6 @@ export const constantRoutes = [
   },
   {
     path: '*',
-    redirect: '/404'
-  }
-];
+    redirect: '/404',
+  },
+]
