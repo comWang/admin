@@ -6,8 +6,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isCollapse: window.innerWidth < 480 ? true : false,
-    isMobile: window.innerWidth < 480,
+    avatar: '',
+    nickname: '',
+    dynamicRoutes: [],
+    menu: {},
+    category: 'default',
   },
   getters: {},
   actions,

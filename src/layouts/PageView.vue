@@ -1,66 +1,48 @@
 <script>
-import { mapState, mapMutations } from 'vuex'
-import Footer from '@/components/global/Footer'
+import { mapState } from 'vuex'
+
 export default {
   name: 'PageView',
-  components: {
-    Footer,
-  },
   render(h) {
-    const { matched } = this.$route
-
-    const breadcrumb = (
-      <el-breadcrumb separator="/">
-        {matched.slice(1, matched.length).map((route, i) => {
-          if (i === matched.length - 1) return (
-            <el-breadcrumb-item>{route.name}</el-breadcrumb-item>
-          )
-          return (
-            <el-breadcrumb-item to={{path: route.path}}>{route.name}</el-breadcrumb-item>
-          )
-        })}
-      </el-breadcrumb>
-    )
+    const { currentRoute } = this.$router
     return (
-      <div>
-        <div class="breadcrumb-wrap">
-        <i onclick={this.toggleAsideBar} class={this.isCollapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'} />
-        <span>{breadcrumb}</span>
+      <div class="box">
+        <div class="page">
+          <router-view />
         </div>
-        <router-view />
-        <Footer />
       </div>
     )
   },
   computed: {
     ...mapState(['isCollapse']),
   },
-  methods: {
-    ...mapMutations(['toggleAsideBar']),
-  },
 }
 </script>
 
 <style lang="less" scoped>
-.breadcrumb-wrap {
-  display: flex;
-  height:50px;
-  line-height: 50px;
-  i {
-    margin-right: 16px;
-    line-height: 50px;
-    font-size: 24px;
-    height: 50px;
-    width: 50px;
-    &:hover {
-      cursor: pointer;
-      background-color: #ececec;
+.box {
+  overflow: auto;
+  box-sizing: border-box;
+  height: calc(100vh - 60px);
+  padding: 30px;
+  background-color: @light;
+  border-top: 1px solid @light;
+}
+.page {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 4px 4px 10px 0px rgba(218, 218, 218, 0.5);
+  .custom-tabs /deep/ .el-tabs__header {
+    background-color: @light;
+  }
+  .custom-tabs /deep/ .el-tabs__item.is-top {
+    border-radius: 6px 6px 0 0;
+    &.is-active {
+      background-color: #fff;
     }
   }
-}
-
-.el-breadcrumb__item {
-  line-height: 50px;
-  font-size: 16px;
+  .custom-tabs /deep/ .el-tab-pane {
+    padding: 30px;
+  }
 }
 </style>

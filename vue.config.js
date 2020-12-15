@@ -27,8 +27,6 @@ const vueConfig = {
   publicPath: './',
   configureWebpack: {
     plugins: [
-      // Ignore all locale files of moment.js
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new webpack.DefinePlugin({
         APP_VERSION: `"${require('./package.json').version}"`,
         BUILD_DATE: buildDate,
@@ -55,30 +53,33 @@ const vueConfig = {
         name: 'assets/[name].[hash:8].[ext]',
       })
     // 框架从cdn加载，这里cdn是自定义配置，index模板从中取值生成标签
-    if (isProd) {
-      config.plugin('html').tap(args => {
-        // 单页只有一个实例配置
+    config.plugin('html').tap(args => {
+      // 单页只有一个实例配置
+      args[0].title = require('./package.json').description
+      if (isProd) {
         args[0].cdn = assetsCDN
-        return args
-      })
-      config.merge({ externals: assetsCDN.externals })
-    }
+        config.merge({ externals: assetsCDN.externals })
+      }
+      return args
+    })
   },
   devServer: {
     port: 3000,
-    proxy: {
-      '/api': {
-        pathRewrite: { '/api': '' },
-        target: 'https://example.com',
-        ws: false,
-        changeOrigin: true,
-      },
-    },
+    // proxy: {
+    //   '/api': {
+    //     pathRewrite: { '/api': '' },
+    //     // server api address
+    //     target: 'http://192.168.1.127:3000',
+    //     ws: false,
+    //     changeOrigin: true,
+    //   },
+    // },
   },
   css: {
     loaderOptions: {
       less: {
-        prependData: '@import \'@/global.less\';',
+        // eslint-disable-next-line
+        prependData: "@import '@/global.less';",
       },
     },
   },

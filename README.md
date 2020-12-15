@@ -1,4 +1,4 @@
-# admin-system
+# admin
 
 ## Project setup
 ```
@@ -21,4 +21,5 @@ yarn lint
 ```
 
 ### Customize configuration
+[预览](http://comwang.github.io/admin/preview/index.html)
 See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,5 +1,5 @@
 <template>
-  <div class="base-footer">Copyright © 2017- 2020 某公司</div>
+  <div class="base-footer">Copyright © 2017- {{new Date().getFullYear()}} 某公司</div>
 </template>
 
 <script>

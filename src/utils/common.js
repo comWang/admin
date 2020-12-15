@@ -32,14 +32,12 @@ export const throttleFrame = (fn, env = null) => {
 }
 
 export const elegantPromise = promise => {
-  return new Promise((resolve) => {
-    promise
-      .then(data => resolve([null, data]))
-      .catch(err => resolve([err, null]))
+  return new Promise(resolve => {
+    promise.then(data => resolve([null, data])).catch(err => resolve([err, null]))
   })
 }
 
-export const setDocumentTitle = function (title) {
+export const setDocumentTitle = function(title) {
   document.title = title
   const ua = navigator.userAgent
   // eslint-disable-next-line
@@ -48,11 +46,34 @@ export const setDocumentTitle = function (title) {
     const i = document.createElement('iframe')
     i.src = '/favicon.ico'
     i.style.display = 'none'
-    i.onload = function () {
-      setTimeout(function () {
+    i.onload = function() {
+      setTimeout(function() {
         i.remove()
       }, 9)
     }
     document.body.appendChild(i)
   }
+}
+
+export const filterEmptyProps = data => {
+  if (typeof data !== 'object') return data
+  const keys = Object.keys(data)
+  if (keys.length) {
+    keys.forEach(key => {
+      const value = data[key]
+      if (value === undefined || value === null || value === '') delete data[key]
+    })
+  }
+
+  return data
+}
+
+
+export const parseMoney = value => {
+  return parseInt(value) / 100
+}
+
+export const fixDigit = (value, n = 2) => {
+  if (isNaN(parseFloat(value))) return value
+  return parseFloat(value).toFixed(n)
 }

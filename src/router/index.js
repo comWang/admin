@@ -1,5 +1,5 @@
 import Router from 'vue-router'
-import { asyncRoutes, constantRoutes } from '@/config/router.config'
+import { basicRoutes } from '@/config/router.config'
 
 
 // hack router push callback
@@ -12,7 +12,6 @@ Router.prototype.push = function push (location, onResolve, onReject) {
 export default new Router({
   mode: 'hash',
   routes: [
-    ...asyncRoutes,
-    ...constantRoutes,
+    ...basicRoutes,
   ],
 })

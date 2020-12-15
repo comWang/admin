@@ -5,13 +5,18 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import '@/utils/event'
+import debug from '@/utils/debug'
 import './vue.directives'
 import './permission'
+// comment next line to disable mock
+import './mock'
+
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(elementUi)
+Vue.prototype.$debug = debug
+
 new Vue({
   router,
   store,

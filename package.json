@@ -1,6 +1,7 @@
 {
-  "name": "admin-system",
-  "version": "0.1.0",
+  "name": "admin",
+  "description": "后台管理系统",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode=dev",
@@ -12,7 +13,11 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "crypto-js": "^4.0.0",
+    "dayjs": "^1.9.4",
+    "echarts": "^4.9.0",
     "element-ui": "^2.13.2",
+    "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "store": "^2.0.12",
     "vue": "^2.6.11",
