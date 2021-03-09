@@ -6,6 +6,7 @@ export default {
   computed: {
     ...mapState([ 'menu', 'category']),
   },
+  // eslint-disable-next-line
   render(h) {
     const { aside } = theme
     const { menu, category } = this
@@ -37,7 +38,7 @@ export default {
           text-color={aside.color}
           active-text-color={aside.activeColor}
         >
-          {menuList.map((item, index) =>
+          {menuList.map((item) =>
             item.submenu ? (
               createSubmenu(item)
             ) : (

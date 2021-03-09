@@ -66,12 +66,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:  @gap 0;
+  padding:  10px 0;
   & > div {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 @gap-s;
+    margin: 0 10px-s;
   }
   .separator {
     padding: 0 6px;

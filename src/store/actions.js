@@ -1,4 +1,3 @@
-import request from '@/utils/request'
 import storage from 'store'
 import { selectCatalog, loginIn } from '@/api/login'
 
@@ -42,11 +41,11 @@ export default {
         token,
         phone,
       })
-      if (res && res.flag) {
+      if (!err) {
         commit('setPermissions', res.data.rows)
         commit('setUserProfile', res.data.userInfo)
         resolve()
-      } else reject(new Error(err || (res && res.message)))
+      } else reject(err)
     })
   },
 }

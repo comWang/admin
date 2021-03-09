@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode=dev",
+    "serve:pre": "vue-cli-service serve --mode=preview",
     "build": "vue-cli-service build --mode=prod",
     "lint": "vue-cli-service lint",
     "lint:nofix": "vue-cli-service lint --no-fix",
@@ -32,6 +33,8 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "less-loader": "^6.1.3",
+    "svg-sprite-loader": "^5.2.1",
+    "svgo-loader": "^3.0.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [

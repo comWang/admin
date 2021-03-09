@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 import { createResponse } from '../helper'
 
-const fakeNestedPermissions = [
+const permissions = [
   {
     path: '/system',
     description: '系统管理',
@@ -55,18 +55,18 @@ const fakeNestedPermissions = [
   },
 ]
 
-Mock.mock(/\/pub\/loginIn/, options => {
+Mock.mock(/\/pub\/loginIn/, () => {
   return createResponse(true, {
     token: '32de85a280edf',
     role: 5,
   })
 })
 
-Mock.mock(/\/sys\/selectCatalog/, options =>
+Mock.mock(/\/sys\/selectCatalog/, () =>
   createResponse(true, {
     userInfo: {
       nickname: '会飞的猪',
     },
-    rows: fakeNestedPermissions,
+    rows: permissions,
   })
 )

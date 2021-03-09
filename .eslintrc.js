@@ -10,10 +10,11 @@ module.exports = {
     parser: 'babel-eslint',
   },
   rules: {
+    'no-console': 'error',
     'no-async-promise-executor': 0,
     semi: ['error', prettierRules.semi ? 'always' : 'never'],
     quotes: ['error', prettierRules.singleQuote ? 'single' : 'double'],
-    'no-unused-vars': 0,
+    'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
     'no-multi-spaces': 'error',
     'max-len': [
       'error',

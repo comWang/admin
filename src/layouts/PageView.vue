@@ -3,8 +3,8 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'PageView',
+  // eslint-disable-next-line
   render(h) {
-    const { currentRoute } = this.$router
     return (
       <div class="box">
         <div class="page">

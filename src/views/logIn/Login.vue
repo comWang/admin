@@ -23,25 +23,7 @@
 </template>
 
 <script>
-import request from '@/utils/request'
 import { mapActions } from 'vuex'
-
-const validateUsername = (rule, value, callback) => {
-  if (value === '') {
-    callback(new Error('请输入用户名'))
-  } else {
-    callback()
-  }
-}
-const validatePassword = (rule, value, callback) => {
-  if (value === '') {
-    callback(new Error('请输入密码'))
-  } else if (!/^\s*[a-zA-Z-0-9]\s*$/i.test(value)) {
-    callback(new Error('密码只能是字母或数字组成!'))
-  } else {
-    callback()
-  }
-}
 
 export default {
   data() {
@@ -93,7 +75,7 @@ export default {
   height: 100vh;
   background-size: cover;
   background-position: center;
-  background-image: url('~@/assets/login-bg.png');
+  background-color: #74c7b8;
   font-family: 'PingFangSC-Medium', 'PingFang SC';
 }
 

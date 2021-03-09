@@ -15,65 +15,12 @@ const layouts = {
   PageView,
   BlankLayout,
   RouterView: {
+    // eslint-disable-next-line
     render(h) {
       return <router-view />
     },
   },
 }
-
-// const fakeNestedPermissions = [
-//   {
-//     path: '/system',
-//     description: '系统管理',
-//     component: 'PageView',
-//     pages: [
-//       {
-//         path: '/setting',
-//         description: '系统设置',
-//         component: 'RouterView',
-//         pages: [
-//           {
-//             path: '/RoleManage',
-//             description: '角色管理',
-//             component: 'setting/RoleManage',
-//             permissions: [
-//               {
-//                 name: 'SELECT',
-//                 description: '查看',
-//               },
-//               {
-//                 name: 'ADD',
-//                 description: '新增',
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     path: '/business',
-//     description: '业务管理',
-//     component: 'PageView',
-//     pages: [
-//       {
-//         path: '/trace',
-//         description: '用户走向统计',
-//         component: 'business/UserFlow',
-//         permissions: [
-//           {
-//             name: 'SELECT',
-//             description: '查看',
-//           },
-//           {
-//             name: 'DC',
-//             description: '导出',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ]
 
 const joinPath = (path, prepend) => {
   let fullpath = ''

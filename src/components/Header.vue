@@ -16,7 +16,7 @@
       <el-col :sm="12" :xs="12">
         <div class="tabs right">
           <div style="display: flex;align-items: center">
-            <el-image style="width: 35px; height: 35px;border-raduis:50%" :src="avatar" fit="cover"></el-image>
+            <Icon style="width: 35px; height: 35px;border-raduis:50%" />
             <span style="margin-left: 10px">{{nickname}}</span>
           </div>
           <p class="ptr" @click="prepareLogout">
@@ -87,7 +87,7 @@ export default {
 .tabs {
   display: flex;
   align-items: center;
-  height: @headerHeight;
+  height: @header-height;
   padding: 0 30px;
   color: @dark;
   &.left {
@@ -108,7 +108,7 @@ export default {
     font-weight: 500;
   }
   p {
-    padding: 0 @gap;
+    padding: 0 10px;
     &.active {
       font-size: 1.2em;
       color: @primary;
@@ -120,7 +120,7 @@ export default {
   img {
     width: 118px;
     height: 48px;
-    padding: 0 @gap;
+    padding: 0 10px;
   }
 }
 </style>

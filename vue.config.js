@@ -1,7 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
-const buildDate = JSON.stringify(new Date().toLocaleString())
-
 const isProd = process.env.NODE_ENV === 'production'
 
 const assetsCDN = {
@@ -26,32 +23,33 @@ const assetsCDN = {
 const vueConfig = {
   publicPath: './',
   configureWebpack: {
-    plugins: [
-      new webpack.DefinePlugin({
-        APP_VERSION: `"${require('./package.json').version}"`,
-        BUILD_DATE: buildDate,
-      }),
-    ],
+    resolve: {
+      alias: {
+        '@': path.join(__dirname, 'src'),
+      },
+    },
   },
 
   chainWebpack: config => {
-    config.resolve.alias.set('@', path.join(__dirname, 'src'))
+    config.module
+      .rule('svg')
+      // 用于icon的svg使用其他规则
+      .exclude.add(path.join(__dirname, 'src/assets/icons'))
 
-    const svgRule = config.module.rule('svg')
-    svgRule.uses.clear()
-    svgRule
-      .oneOf('inline')
-      .resourceQuery(/inline/)
-      .use('vue-svg-icon-loader')
-      .loader('vue-svg-icon-loader')
+    config.module
+      .rule('icon')
+      .test(/\.svg$/)
+      .include.add(path.join(__dirname, 'src/assets/icons'))
       .end()
-      .end()
-      .oneOf('external')
-      .use('file-loader')
-      .loader('file-loader')
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
       .options({
-        name: 'assets/[name].[hash:8].[ext]',
+        symbolId: 'icon-[name]',
       })
+      .end()
+      .use('svgo-loader')
+      .loader('svgo-loader')
+      .end()
     // 框架从cdn加载，这里cdn是自定义配置，index模板从中取值生成标签
     config.plugin('html').tap(args => {
       // 单页只有一个实例配置
@@ -84,7 +82,7 @@ const vueConfig = {
     },
   },
   productionSourceMap: false,
-  lintOnSave: 'warning',
+  lintOnSave: true,
 }
 
 module.exports = vueConfig

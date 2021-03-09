@@ -10,6 +10,7 @@ Vue.directive('auth', {
     if (!permissions || !permissions.length || !permissions.includes(value)) {
       el.parentNode.removeChild(el)
       if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line
         console.log(`操作按钮已被移除，因为不具有${value}权限；页面路径：${path}`)
       }
     }

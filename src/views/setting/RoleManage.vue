@@ -16,7 +16,7 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import { selectRole, deleteRole, selectAuthList, selectAuthByRoleId } from '@/api/role'
+import { selectRole } from '@/api/role'
 
 export default {
   data() {
@@ -52,12 +52,12 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: @gap 0;
+  padding: 10px 0;
   font-size: 14px;
   .left {
     display: flex;
     align-items: center;
-    padding: @gap 0;
+    padding: 10px 0;
     font-size: 14px;
   }
   .input {
@@ -67,10 +67,10 @@ export default {
 }
 
 .pagination {
-  margin-top: @gap;
+  margin-top: 10px;
   text-align: center;
   .pointer {
-    padding: @gap;
+    padding: 10px;
     color: @primary;
   }
 }

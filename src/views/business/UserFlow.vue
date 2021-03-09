@@ -4,6 +4,7 @@ import Pagination from '@/components/Pagination'
 let uid = 0
 
 function PrimaryPage() {
+  // eslint-disable-next-line
   const h = this.$createElement
   return (
     <div>
@@ -38,11 +39,13 @@ function PrimaryPage() {
 }
 
 function EquipmentPage(props = {}) {
+  // eslint-disable-next-line
   const h = this.$createElement
   return <h1 props={{ ...props }}>EquipmentPage</h1>
 }
 
 function PicturePage(props = {}) {
+  // eslint-disable-next-line
   const h = this.$createElement
   return <h1 props={{ ...props }}>PicturePage</h1>
 }
@@ -101,6 +104,7 @@ export default {
       this.currentTab = newTabName
     },
   },
+  // eslint-disable-next-line
   render(h) {
     if (!this.tabs[0]) {
       const { meta } = this.$router.currentRoute
@@ -110,7 +114,6 @@ export default {
         render: vm => PrimaryPage.call(vm),
       })
     }
-    const { isLoading } = this
     return (
       <div class="custom-tabs">
         <el-tabs value={this.currentTab} type="card" ontab-remove={this.removeTab} ontab-click={this.toggleTab}>
@@ -141,12 +144,12 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: @gap 0;
+  padding: 10px 0;
   font-size: 14px;
   .left {
     display: flex;
     align-items: center;
-    padding: @gap 0;
+    padding: 10px 0;
     font-size: 14px;
   }
   .input {

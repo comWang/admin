@@ -11,7 +11,6 @@
 import { mapState } from 'vuex'
 import Aside from '@/components/Aside'
 import Header from '@/components/Header'
-import theme from '@/config/theme.config'
 
 export default {
   components: {

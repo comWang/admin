@@ -1,5 +1,4 @@
 import request from '@/utils/request'
-import { filterEmptyProps } from '@/utils/common'
 
 export const selectCatalog = params =>
   request({
